@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>RaksyeBook</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <hr />
+      <h1>Membuat Buku Baru</h1>
+      <hr />
+
+      <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input
+          type="text"
+          name="isbn"
+          class="form-control"
+          id="isbn"
+          placeholder="ISBN"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="judul" class="form-label">Judul</label>
+        <input
+          type="text"
+          name="judul"
+          class="form-control"
+          id="judul"
+          placeholder="Judul"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="penulis" class="form-label">Penulis</label>
+        <input
+          type="text"
+          name="penulis"
+          class="form-control"
+          id="penulis"
+          placeholder="Penulis"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="terbit" class="form-label">Tanggal Terbit</label>
+        <input
+          type="text"
+          name="tglterbit"
+          class="form-control"
+          id="terbit"
+          placeholder="Tanggal Terbit"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="penerbit" class="form-label">Penerbit</label>
+        <input
+          type="text"
+          name="penerbit"
+          class="form-control"
+          id="penerbit"
+          placeholder="Penerbit"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="halaman" class="form-label">Jumlah Halaman</label>
+        <input
+          type="text"
+          name="jmlhalaman"
+          class="form-control"
+          id="halaman"
+          placeholder="Jumlah Halaman"
+        />
+      </div>
+
+      <!--Other fields-->
+      <button type="submit" class="btn btn-primary" id="saveBooks">
+        Buat
+      </button>
+      <button type="submit" class="btn btn-success" id="updateBooks">
+        Ubah
+      </button>
+    </div>
+
+    <div class="container">
+      <hr />
+      <h1>Semua Buku</h1>
+      <hr />
+
+      <div class="mb-5 mt-5">
+        <input
+          type="text"
+          class="form-control"
+          id="inputBooks"
+          placeholder="Cari Buku berdasarkan Judul [Enter]"
+        />
+      </div>
+      <div class="row" id="allBooks"></div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+  </body>
+</html>
