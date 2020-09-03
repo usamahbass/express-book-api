@@ -162,56 +162,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateBook = document.querySelector("#updateBooks");
   const inputSearch = document.querySelector("#inputBooks");
 
-  const inputBookIsbn = document.querySelector("#isbn");
-  const inputBookJudul = document.querySelector("#judul");
-  const inputBookPenulis = document.querySelector("#penulis");
-  const inputBookPenerbit = document.querySelector("#penerbit");
-  const inputBookTerbit = document.querySelector("#terbit");
-  const inputBookHalaman = document.querySelector("#halaman");
+  saveBook.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  saveBook.addEventListener("click", function () {
-    const book = {
-      isbn: inputBookIsbn.value,
-      judul: inputBookJudul.value,
-      penulis: inputBookPenulis.value,
-      penerbit: inputBookPenerbit.value,
-      tglterbit: inputBookTerbit.value,
-      jmlhalaman: inputBookHalaman.value,
-    };
+    let book = {};
 
-    if (
-      (book.isbn,
-      book.judul,
-      book.penulis,
-      book.penerbit,
-      book.tglterbit,
-      book.jmlhalaman === "")
-    ) {
-      alert("isi form dulu bos");
+    [...document.querySelectorAll("form")].map((elem) => {
+      elem
+        .querySelectorAll("input")
+        .forEach((el) => (book[el.name] = el.value));
+    });
+
+    if (Object.keys(book).length === 0) {
+      alert("isi form dulu bos !");
     } else {
       saveBooks(book);
     }
   });
 
-  updateBook.addEventListener("click", function () {
-    const book = {
-      isbn: inputBookIsbn.value,
-      judul: inputBookJudul.value,
-      penulis: inputBookPenulis.value,
-      penerbit: inputBookPenerbit.value,
-      tglterbit: inputBookTerbit.value,
-      jmlhalaman: inputBookHalaman.value,
-    };
+  updateBook.addEventListener("click", (e) => {
+    e.preventDefault();
 
-    if (
-      (book.isbn,
-      book.judul,
-      book.penulis,
-      book.penerbit,
-      book.tglterbit,
-      book.jmlhalaman === "")
-    ) {
-      alert("isi form dulu bos");
+    let book = {};
+
+    [...document.querySelectorAll("form")].map((elem) => {
+      elem.querySelectorAll("input").forEach((el) => book[el.name] == el.value);
+    });
+
+    if (Object.keys(book).length === 0) {
+      alert("isi form dulu bos !");
     } else {
       editBooks(book);
     }
@@ -226,3 +205,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadBooks();
 });
+
+// <div class="col">
+// <div class="card">
+//     <div class="card-body">
+//         <h5 class="card-title">${book.judul}</h5>
+//         <h6 class="card-subtitle mb-2 text-muted">${book.isbn}</h6>
+
+//         <div>Penulis: ${book.penulis}</div>
+//         <div>Penerbit: ${book.penerbit}</div>
+//         <div>Jumlah Halaman: ${book.jmlhalaman}</div>
+
+//         <hr>
+
+//         <button type="button" class="btn btn-danger delete-button" id="${book.isbn}">Hapus</button>
+
+//     </div>
+// </div>
+// </div>

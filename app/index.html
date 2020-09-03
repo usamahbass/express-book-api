@@ -11,18 +11,17 @@
     />
   </head>
   <body>
-    <div class="container">
-      <hr />
-      <h1>Membuat Buku Baru</h1>
-      <hr />
+    <hr />
+    <h1 class="text-center">Membuat Buku Baru</h1>
+    <hr />
 
+    <form class="container">
       <div class="mb-3">
         <label for="isbn" class="form-label">ISBN</label>
         <input
           type="text"
           name="isbn"
           class="form-control"
-          id="isbn"
           placeholder="ISBN"
         />
       </div>
@@ -32,7 +31,6 @@
           type="text"
           name="judul"
           class="form-control"
-          id="judul"
           placeholder="Judul"
         />
       </div>
@@ -43,7 +41,6 @@
           type="text"
           name="penulis"
           class="form-control"
-          id="penulis"
           placeholder="Penulis"
         />
       </div>
@@ -54,7 +51,6 @@
           type="text"
           name="tglterbit"
           class="form-control"
-          id="terbit"
           placeholder="Tanggal Terbit"
         />
       </div>
@@ -65,7 +61,6 @@
           type="text"
           name="penerbit"
           class="form-control"
-          id="penerbit"
           placeholder="Penerbit"
         />
       </div>
@@ -76,19 +71,16 @@
           type="text"
           name="jmlhalaman"
           class="form-control"
-          id="halaman"
           placeholder="Jumlah Halaman"
         />
       </div>
 
       <!--Other fields-->
-      <button type="submit" class="btn btn-primary" id="saveBooks">
-        Buat
-      </button>
+      <button type="submit" class="btn btn-primary" id="saveBooks">Buat</button>
       <button type="submit" class="btn btn-success" id="updateBooks">
         Ubah
       </button>
-    </div>
+    </form>
 
     <div class="container">
       <hr />
