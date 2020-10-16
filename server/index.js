@@ -31,8 +31,20 @@ app.get("/", (req, res) =>
 
   http://localhost:3000/buku/:isbn :
     - method: GET, mendapatkan buku berdasarkan isbn
-    - method: delete, menghapus buku
+    - method: DELETE, menghapus buku
     - method: PUT, mengganti buku yang ada dengan buku baru berdasarkan ISBN yang sama
+
+  contoh response:
+    [
+      {
+        isbn: "12345678",
+        judul: "Si Bass",
+        penulis: "Bass",
+        penerbit: "Raksye",
+        tglterbit: "29/06/2020",
+        jmlhalaman: 20,
+      },
+    ];
 `)
 );
 
@@ -40,7 +52,14 @@ app.get("/", (req, res) =>
 app.route('/buku')
   // Get all books
   .get((req, res) => {
-    res.json(books);
+    let booksCopy = [].concat(books)
+
+    // Filter books
+    for (let query of Object.keys(req.query)) {
+      booksCopy = booksCopy.filter(book => book[query].includes(req.query[query]))
+    }
+
+    res.json(booksCopy);
   })
   // Create new book
   .post((req, res) => {
@@ -52,30 +71,28 @@ app.route('/buku')
     res.send({ response: "Buku telah ditambahkan !" });
   })
 
+/**
+ * Unnecessary. As user can filter books with query params
+ */
 // With "judul field"
-app.get("/buku/:judul", (req, res, next) => {
-  // membaca judul dari url
+// app.get("/buku/:judul", (req, res, next) => {
+//   // membaca judul dari url
 
-  const judul = req.params.judul;
+//   const judul = req.params.judul;
 
-  // Check if judul is exist
-  if (!judul) {
-    // throw to next middleware if not
-    return next()
-  }
-  // cari buku dengan judul
+//   // cari buku dengan judul
 
-  for (let book of books) {
-    if (book.judul === judul) {
-      res.json(book);
-      return;
-    }
-  }
+//   for (let book of books) {
+//     if (book.judul === judul) {
+//       res.json(book);
+//       return;
+//     }
+//   }
 
-  // tampilkan 404 apabila isbn tidak ditemukan
+// tampilkan 404 apabila isbn tidak ditemukan
 
-  res.send({ response: "Buku tidak ditemukan !" });
-});
+//   res.send({ response: "Buku tidak ditemukan !" });
+// });
 
 // By ISBN
 app.route('/buku/:isbn')
